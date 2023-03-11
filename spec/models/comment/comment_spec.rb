@@ -40,4 +40,9 @@ RSpec.describe Comment, type: :model do
     @comment.increment_comments_counter
     expect(@post.comments_counter).to eq(@post.comments_counter)
   end
+
+  it 'comments_counter should decrease comment count' do
+    @comment.decrement_comments_counter
+    expect(@post.comments_counter).to eq(@post.comments_counter)
+  end
 end

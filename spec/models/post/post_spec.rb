@@ -46,4 +46,9 @@ RSpec.describe Post, type: :model do
     @post.posts_counter
     expect(@user.postscounter).to eq(@user.postscounter)
   end
+
+  it 'show most recent comments' do
+    @post.recent_comments
+    expect(@post.comments).to eq(@post.comments)
+  end
 end
