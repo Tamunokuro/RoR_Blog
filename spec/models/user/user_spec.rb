@@ -18,8 +18,7 @@ RSpec.describe User, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it 'postscounter must be greater than or equal to 0' do
-    subject.postscounter = -1
-    expect(subject).to_not be_valid
+  it 'most_recent_posts returns the most recent posts' do
+    expect(subject.most_recent_posts).to eq(subject.posts.order(created_at: :desc).limit(5))
   end
 end

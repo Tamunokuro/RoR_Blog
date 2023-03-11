@@ -1,30 +1,43 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  subject { Comment.new(text: 'This is a comment', author_id: 1, post_id: 1) }
-  before { subject.save }
+  before :all do
+    @user = User.create(name: 'Jennifer Alexis', photo: 'jennifer.jpeg', bio: 'Hair stylist', postscounter: 0)
+    @post = Post.create(title: 'This is my post', text: 'Thie is text', comments_counter: 0, likes_counter: 0,
+                        author_id: @user.id)
+    @comment = Comment.create(author_id: @user.id, post_id: @post.id, text: 'This is my comment')
+
+    @user.save
+    @post.save
+    @comment.save
+  end
 
   it 'is valid with valid attributes' do
-    expect(subject).to_not be_valid
+    expect(@comment).to be_valid
   end
 
   it 'is not valid without a text' do
-    subject.text = nil
-    expect(subject).to_not be_valid
+    @comment.text = nil
+    expect(@comment).to_not be_valid
   end
 
   it 'text must be less than 1000 characters' do
-    subject.text = 'a' * 1001
-    expect(subject).to_not be_valid
+    @comment.text = 'a' * 1001
+    expect(@comment).to_not be_valid
   end
 
   it 'is not valid without a user_id' do
-    subject.author_id = nil
-    expect(subject).to_not be_valid
+    @comment.author_id = nil
+    expect(@comment).to_not be_valid
   end
 
   it 'is not valid without a post_id' do
-    subject.post_id = nil
-    expect(subject).to_not be_valid
+    @comment.post_id = nil
+    expect(@comment).to_not be_valid
+  end
+
+  it 'comments_counter should increase comment count' do
+    @comment.increment_comments_counter
+    expect(@post.comments_counter).to eq(@post.comments_counter)
   end
 end

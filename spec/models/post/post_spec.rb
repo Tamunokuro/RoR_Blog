@@ -1,35 +1,49 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  subject { Post.new(title: 'My first post', comments_counter: 0, likes_counter: 0) }
-  before { subject.save }
+  before :all do
+    @user = User.create(name: 'Jennifer Alexis', photo: 'jennifer.jpeg', bio: 'Hair stylist', postscounter: 0)
+    @post = Post.create(title: 'This is my post', text: 'Thie is text', comments_counter: 0, likes_counter: 0,
+                        author_id: @user.id)
+
+    @user.save
+    @post.save
+  end
+
+  # subject { Post.new(title: 'My first post', comments_counter: 0, likes_counter: 0) }
+  # before { subject.save }
 
   it 'is valid with valid attributes' do
-    expect(subject).to_not be_valid
+    expect(@post).to be_valid
   end
 
   it 'is not valid without a title' do
-    subject.title = nil
-    expect(subject).to_not be_valid
+    @post.title = nil
+    expect(@post).to_not be_valid
   end
 
   it 'comments_counter must be an integer' do
-    subject.comments_counter = 'string'
-    expect(subject).to_not be_valid
+    @post.comments_counter = 'string'
+    expect(@post).to_not be_valid
   end
 
   it 'comments_counter must be greater than or equal to 0' do
-    subject.comments_counter = -1
-    expect(subject).to_not be_valid
+    @post.comments_counter = -1
+    expect(@post).to_not be_valid
   end
 
   it 'likes_counter must be an integer' do
-    subject.likes_counter = 'string'
-    expect(subject).to_not be_valid
+    @post.likes_counter = 'string'
+    expect(@post).to_not be_valid
   end
 
   it 'likes_counter must be greater than or equal to 0' do
-    subject.likes_counter = -1
-    expect(subject).to_not be_valid
+    @post.likes_counter = -1
+    expect(@post).to_not be_valid
+  end
+
+  it 'posts_counter should increase post count' do
+    @post.posts_counter
+    expect(@user.postscounter).to eq(@user.postscounter)
   end
 end

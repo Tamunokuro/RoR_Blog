@@ -12,6 +12,8 @@ class Post < ApplicationRecord
   end
 
   def posts_counter
+    return unless user
+
     user.increment :postscounter
     user.save
   end
