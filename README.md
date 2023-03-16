@@ -127,8 +127,8 @@ Install this project with:
 
 ### Run tests
 
-```
-  bundle exec spec
+```sh
+  bundle exec rspec
 ```
 
 
