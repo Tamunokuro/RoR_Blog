@@ -35,6 +35,7 @@ REQUIRED SECTIONS:
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
+    - [Run tests](#run-tests)
   - [👥 Authors ](#-authors-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
@@ -124,17 +125,12 @@ Install this project with:
   rails server
 ```
 
-<!-- ### Run tests
-
-To run tests, run the following command: -->
-
-<!--
-Example command:
+### Run tests
 
 ```sh
-  bin/rails test test/models/article_test.rb
+  bundle exec rspec
 ```
---->
+
 
 <!-- ### Deployment
 
