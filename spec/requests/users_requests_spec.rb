@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'UsersController', type: :request do
   context 'get index action' do
     before(:each) do
-      get '/users'
+      get users_path
     end
 
     it 'returns a 200 status code' do
