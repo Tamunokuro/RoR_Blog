@@ -1,3 +1,25 @@
-<h1>Users#show</h1>
-<h1>This is the user details page</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class = 'user--details'>
+<div class = 'user'>
+<h1><%= @user.name %></h1>
+<p>Number of posts: <%= @user.postscounter %></p>
+</div>
+<div class= 'user--bio'>
+<p>Bio</p>
+<p><%= @user.bio %></p>
+</div>
+</div>
+<div class= 'user--posts'>
+<h3 id='recent--posts'>Most recent posts</h3>
+<div class= 'posts'>
+<% @posts.each do |post| %>
+    <div class='post'>
+    <h4><%= post.title %></h4>
+    <div class='post--utility'>
+    <p>Comments: <%= post.comments_counter %></p>
+    <p>Likes: <%= post.likes_counter %></p>
+    </div>
+    </div>
+<% end %>
+</div>
+<%= button_to("See all Post", posts_path(@user), method: :get, class: 'more-posts-btn') %>
+</div>
