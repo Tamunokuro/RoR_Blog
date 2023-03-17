@@ -1,3 +1,8 @@
-<h1>Posts#show</h1>
-<h1>This the post detail page</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h2 class= 'post--title'><%= @post.title %></h2>
+<p class= 'post--text'><%= @post.text %></p>
+<h3 id= 'comments--section'>Comments</h3>
+<ul class= 'comments'>
+    <% @post.recent_comments.each do |comment| %>
+    <li class= 'comment'> <strong><%= comment.user.name %></strong>:<%= comment.text %></li> 
+    <% end %>
+</ul>

@@ -13,3 +13,140 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  background-color: #f5f5f5;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+#container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.users,
+.comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.user,
+.post,
+.comment {
+  width: 30%;
+  margin-bottom: 30px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.user > h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.user:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.user--details,
+.post {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.post--utility > * {
+  margin-left: 10px;
+}
+
+.user--details > * {
+  margin-bottom: 10px;
+}
+
+.user--details > *:last-child {
+  margin-bottom: 0;
+}
+
+.user--bio {
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  width: 30%;
+}
+
+#recent--posts,
+#comments--section {
+  font-style: italic;
+  padding: 1rem;
+}
+
+.post--utility {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #ff4500;
+}
+
+.more-posts-btn {
+  background-color: #ff4500;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.post--title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #6a5acd;
+}
+
+.post--text {
+  margin-bottom: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .user--details,
+  .user,
+  .user--bio,
+  .post,
+  .comment {
+    width: 100%;
+  }
+}
