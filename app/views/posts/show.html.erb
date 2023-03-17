@@ -2,7 +2,7 @@
 <p class= 'post--text'><%= @post.text %></p>
 <h3 id= 'comments--section'>Comments</h3>
 <ul class= 'comments'>
-    <% @post.comments.each do |comment| %>
+    <% @post.recent_comments.each do |comment| %>
     <li class= 'comment'> <strong><%= comment.user.name %></strong>:<%= comment.text %></li> 
     <% end %>
 </ul>
