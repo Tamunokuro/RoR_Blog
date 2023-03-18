@@ -18,9 +18,11 @@ class PostsController < ApplicationController
   def create
     @user = current_user
     @post = @user.posts.build(post_params)
-    if @post.save
+    @post.comments_counter = 0
+    @post.likes_counter = 0
+    if @post.save!
       flash[:success] = "Post saved successfully"
-      redirect_to user_posts_url(@user)
+      redirect_to post_path(@user, @post)
     else
       render :new
     end
