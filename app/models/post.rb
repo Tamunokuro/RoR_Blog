@@ -14,8 +14,9 @@ class Post < ApplicationRecord
 
   def increment_like
     return unless user
-    self.increment :likes_counter
-    self.save
+
+    increment :likes_counter
+    save
   end
 
   def posts_counter

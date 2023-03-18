@@ -7,11 +7,11 @@ ruby '3.2.0'
 
 gem 'jquery-rails'
 
-#bootstrap
+# bootstrap
 gem 'bootstrap', '~> 5.2.2'
 
 # Bootstrap forms
-gem "bootstrap_form", "~> 5.1"
+gem 'bootstrap_form', '~> 5.1'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4', '>= 7.0.4.2'

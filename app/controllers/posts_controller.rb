@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @post.comments_counter = 0
     @post.likes_counter = 0
     if @post.save!
-      flash[:success] = "Post saved successfully"
+      flash[:success] = 'Post saved successfully'
       redirect_to post_path(@user, @post)
     else
       render :new
@@ -29,7 +29,8 @@ class PostsController < ApplicationController
   end
 
   private
-  def post_params 
+
+  def post_params
     params.require(:post).permit(:title, :text)
   end
 end
