@@ -6,3 +6,7 @@
     <li class= 'comment'> <strong><%= comment.user.name %></strong>:<%= comment.text %></li> 
     <% end %>
 </ul>
+<div class= 'post--utility'>
+<%= button_to("Create new comment", new_comment_path(@user, @post), method: :get, class: 'btn btn-secondary') %>
+<%= button_to("Add Like", create_like_path(@user, @post), method: :post, class: 'btn btn-secondary') %>
+</div>
