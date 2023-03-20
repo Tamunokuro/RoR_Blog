@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @post.comments_counter = 0
     @post.likes_counter = 0
     if @post.save
-      redirect_to post_path(@user, @post), notice: "Post saved successfully"
+      redirect_to post_path(@user, @post), notice: 'Post saved successfully'
     else
       render :new
     end
