@@ -155,9 +155,10 @@ Example:
 - GitHub: [Tamunokuro](https://github.com/Tamunokuro)
 - LinkedIn: [Joshua Blue-Jack](https://linkedin.com/in/joshua-blue-jack)
 
-<!-- 👤 **Author2**
+👤 **Author2**
 
 - GitHub: [AhmadiGu](https://github.com/AhmadiGu)
+- LinkedIn: [Gulalai Ahmadi](https://linkedin.com/in/gulalai-ahmadi)
  
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
