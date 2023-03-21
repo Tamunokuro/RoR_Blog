@@ -7,9 +7,9 @@ RSpec.describe Comment, type: :model do
                         author_id: @user.id)
     @comment = Comment.create(author_id: @user.id, post_id: @post.id, text: 'This is my comment')
 
-    @user.save
-    @post.save
-    @comment.save
+    before { @user.save }
+    before { @post.save }
+    before { @comment.save }
   end
 
   it 'is valid with valid attributes' do

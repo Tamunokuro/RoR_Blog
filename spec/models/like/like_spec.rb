@@ -7,9 +7,9 @@ RSpec.describe User, Like, type: :model do
                         author_id: @user.id)
     @like = Like.create(author_id: @user.id, post_id: @post.id)
 
-    @user.save
-    @post.save
-    @like.save
+    before { @user.save }
+    before { @post.save }
+    before { @like.save }
   end
 
   # subject { Like.new(author_id: 1, post_id: 1) }

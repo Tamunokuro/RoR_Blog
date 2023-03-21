@@ -6,12 +6,9 @@ RSpec.describe Post, type: :model do
     @post = Post.create(title: 'This is my post', text: 'Thie is text', comments_counter: 0, likes_counter: 0,
                         author_id: @user.id)
 
-    @user.save
-    @post.save
+    before { @user.save }
+    before { @post.save }
   end
-
-  # subject { Post.new(title: 'My first post', comments_counter: 0, likes_counter: 0) }
-  # before { subject.save }
 
   it 'is valid with valid attributes' do
     expect(@post).to be_valid
