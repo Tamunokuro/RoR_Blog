@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'users#index', type: :system do
+RSpec.describe 'users#index', type: :feature do
   describe 'users index page' do
     before(:each) do
       User.create(name: 'Aisha', photo: 'https://unsplash.com/photos/7mBictB_urk', bio: 'Accountant', postscounter: 0)
