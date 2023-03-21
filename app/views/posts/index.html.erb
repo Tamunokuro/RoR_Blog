@@ -2,7 +2,7 @@
 <ul class= 'posts'>
     <% @user.posts.each do |post| %>
     <li class='post'><%= link_to post.title, controller: "posts", action: "show", author_id: @user.id, post_id: post.id %>
-    <div class= 'post--utility'
+    <div class= 'post--utility'>
     <p>Comments(<%= post.comments_counter %>)</p>
     <p>Likes(<%= post.likes_counter %>)</p>
     </div>
