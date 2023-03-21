@@ -18,8 +18,6 @@ RSpec.describe 'user#show', type: :feature do
                 comments_counter: 0, author_id: @user2.id)
   end
 
-
-
   context 'Load show page' do
     it 'Should see user image' do
       visit user_path(@user1.id)
