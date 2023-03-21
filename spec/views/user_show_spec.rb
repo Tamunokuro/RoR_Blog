@@ -52,7 +52,7 @@ RSpec.describe 'user#show', type: :system do
       expect(page).to have_content('See all Post')
     end
 
-    # #############User post page#####################
+    # #############User post page & Post page#####################
 
     scenario 'When I click see all posts it redirects me to the user post show page' do
       click_button('See all Post')
@@ -64,6 +64,16 @@ RSpec.describe 'user#show', type: :system do
       click_button('See all Post')
       sleep(10)
       expect(page).to have_content('This is a post')
+    end
+
+    scenario 'I can see the post title.' do
+      visit post_path(@user1.id, @post1.id)
+      expect(page).to have_content('This is a post')
+    end
+
+    scenario 'I can see the post text.' do
+      visit post_path(@user1.id, @post1.id)
+      expect(page).to have_content('Accounting made easy')
     end
 
     scenario 'I can see comment username' do

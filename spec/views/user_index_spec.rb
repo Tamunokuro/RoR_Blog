@@ -10,8 +10,9 @@ RSpec.describe 'users#index', type: :system do
     end
 
     scenario 'I can see the username of all other users.' do
-      sleep(10)
+      sleep(5)
       expect(page).to have_content('Aisha')
+      expect(page).to have_content('Moses')
     end
 
     scenario 'I can see the profile picture for each user.' do
