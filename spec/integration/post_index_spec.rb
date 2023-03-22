@@ -19,20 +19,16 @@ RSpec.describe 'posts#index', type: :feature do
     @comment1 = Comment.create(text: 'This is great', post_id: @post1.id, author_id: @user2.id)
     visit user_path(@user1.id)
   end
-
   context 'Load index page' do
     it 'Should see the profile picture' do
       expect(page).to have_selector('img')
     end
-
     it 'Should see the posts author' do
       expect(page).to have_content('Aisha')
     end
-
     it 'Should see the number of posts' do
       expect(page).to have_content('Number of posts: 4')
     end
-
     it 'Should see the posts title' do
       expect(page).to have_content('This is a post')
     end
@@ -45,10 +41,21 @@ RSpec.describe 'posts#index', type: :feature do
       expect(page).to have_content("Likes: #{@post1.likes_counter}")
     end
 
-    it 'Should see some post body and first comment' do
-      click_link 'This is a post'
+    it 'Should see some post body' do
+      visit posts_path(@user1.id)
       expect(page).to have_content('Accounting made easy')
+    end
+
+    it 'Should see the first comment on the post' do
+      click_link 'This is a post'
       expect(page).to have_content('Moses:This is great')
+    end
+  end
+
+  context 'Navigations' do
+    it 'Should see pagination' do
+      visit posts_path(@user1.id)
+      expect(page).to have_content('Pagination')
     end
 
     it 'Should redirect to post page after post title is clicked' do

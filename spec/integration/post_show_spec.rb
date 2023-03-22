@@ -26,11 +26,11 @@ RSpec.describe 'posts#show', type: :feature do
     end
 
     it 'Should see number of comments' do
-      expect(page).to have_content('Comments')
+      expect(page).to have_content('Comments(1)')
     end
 
     it 'Should see number of likes' do
-      expect(page).to have_content('Likes')
+      expect(page).to have_content('Likes(0)')
     end
 
     it 'Should see the post body' do

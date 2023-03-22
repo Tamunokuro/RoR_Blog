@@ -3,6 +3,7 @@
 <ul class= 'posts'>
     <% @user.posts.each do |post| %>
     <li class='post'><%= link_to post.title, controller: "posts", action: "show", author_id: @user.id, post_id: post.id %>
+    <p><%= post.text %></p>
     <div class= 'post--utility'>
     <p>Comments(<%= post.comments_counter %>)</p>
     <p>Likes(<%= post.likes_counter %>)</p>
@@ -11,4 +12,4 @@
     <%= render partial: "shared/post", locals: { post: post } %>
     <% end %>
 </ul>
-<%= button_to("Create new post", new_post_path(@user), method: :get, class: 'btn btn-secondary') %>
+<%= button_to("Pagination", posts_path(@user), method: :get, class: 'btn btn-secondary') %>
