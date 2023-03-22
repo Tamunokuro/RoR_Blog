@@ -14,7 +14,7 @@
 <div class= 'posts'>
 <% @posts.each do |post| %>
     <div class='post'>
-    <h4><%= post.title %></h4>
+    <h4><%= link_to post.title, controller: "posts", action: "show", author_id: @user.id, post_id: post.id %></h4>
     <div class='post--utility'>
     <p>Comments: <%= post.comments_counter %></p>
     <p>Likes: <%= post.likes_counter %></p>

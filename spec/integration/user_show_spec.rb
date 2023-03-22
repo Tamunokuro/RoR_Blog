@@ -6,8 +6,8 @@ RSpec.describe 'user#show', type: :feature do
                          postscounter: 0)
     @user2 = User.create(name: 'Moses', photo: 'https://unsplash.com/photos/7mBictB_urk', bio: 'Engineer',
                          postscounter: 2)
-    Post.create(title: 'This is a post', text: 'Accounting made easy', likes_counter: 0,
-                comments_counter: 0, author_id: @user1.id)
+    @post1 = Post.create(title: 'This is a post', text: 'Accounting made easy', likes_counter: 0,
+                         comments_counter: 0, author_id: @user1.id)
     Post.create(title: 'Engineering post', text: 'How to become a mechanical eng', likes_counter: 0,
                 comments_counter: 0, author_id: @user2.id)
     Post.create(title: 'This is another post', text: 'Benefits of budgeting', likes_counter: 0,
@@ -50,5 +50,18 @@ RSpec.describe 'user#show', type: :feature do
       visit user_path(@user1.id)
       expect(page).to have_button('See all Post')
     end
+  end
+
+  it 'Should redirect to the posts page' do
+    visit user_path(@user1.id)
+    sleep(10)
+    click_link 'This is a post'
+    expect(page).to have_current_path post_path(@user1.id, @post1)
+  end
+
+  it 'Should redirects me to the users posts index page' do
+    visit user_path(@user1.id)
+    click_button 'See all Post'
+    expect(page).to have_current_path posts_path(@user1.id)
   end
 end

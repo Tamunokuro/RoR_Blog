@@ -16,33 +16,44 @@ RSpec.describe 'posts#index', type: :feature do
                          comments_counter: 0, author_id: @user1.id)
     @post5 = Post.create(title: 'Automobile engineering', text: 'Reading', likes_counter: 0,
                          comments_counter: 0, author_id: @user2.id)
-    Comment.create(text: 'This is great', post_id: @post1.id, author_id: @user2.id)
+    @comment1 = Comment.create(text: 'This is great', post_id: @post1.id, author_id: @user2.id)
+    visit user_path(@user1.id)
   end
 
   context 'Load index page' do
-    it 'Should see the posts title' do
-      visit posts_path(@user1.id)
-      expect(page).to have_content('This is a post')
+    it 'Should see the profile picture' do
+      expect(page).to have_selector('img')
     end
 
     it 'Should see the posts author' do
-      visit posts_path(@user1.id)
       expect(page).to have_content('Aisha')
     end
 
-    it 'Should see the posts comments counter' do
-      visit posts_path(@user1.id)
-      expect(page).to have_content('Comments(0)')
+    it 'Should see the number of posts' do
+      expect(page).to have_content('Number of posts: 4')
     end
 
-    it 'Should see the posts likes counter' do
-      visit posts_path(@user1.id)
-      expect(page).to have_content('Likes(0)')
+    it 'Should see the posts title' do
+      expect(page).to have_content('This is a post')
     end
 
-    it 'Should see the posts like button' do
-      visit posts_path(@user1.id)
-      expect(page).to have_content('Like')
+    it 'Should see the number of comments' do
+      expect(page).to have_content("Comments: #{@post1.comments_counter}")
+    end
+
+    it 'Should see the number of likes' do
+      expect(page).to have_content("Likes: #{@post1.likes_counter}")
+    end
+
+    it 'Should see some post body and first comment' do
+      click_link 'This is a post'
+      expect(page).to have_content('Accounting made easy')
+      expect(page).to have_content('Moses:This is great')
+    end
+
+    it 'Should redirect to post page after post title is clicked' do
+      visit(post_path(@user1, @post1))
+      expect(page).to have_current_path post_path(@user1, @post1)
     end
   end
 end

@@ -17,39 +17,31 @@ RSpec.describe 'posts#show', type: :feature do
     @post5 = Post.create(title: 'Automobile engineering', text: 'Reading', likes_counter: 0,
                          comments_counter: 0, author_id: @user2.id)
     Comment.create(text: 'This is great', post_id: @post1.id, author_id: @user2.id)
+    visit post_path(@user1.id, @post1.id)
   end
 
   context 'Post index page' do
-    it 'Should see the user name' do
-      visit post_path(@user1.id, @post1.id)
+    it 'Should see the post title' do
       expect(page).to have_content('This is a post')
-      expect(page).to have_content('Accounting made easy')
     end
 
-    it 'Should see number of posts' do
-      visit post_path(@user1.id, @post1.id)
+    it 'Should see number of comments' do
       expect(page).to have_content('Comments')
     end
 
-    it 'Should see the users first three posts' do
-      visit post_path(@user1.id, @post1.id)
-      expect(page).to have_content('This is a post')
+    it 'Should see number of likes' do
+      expect(page).to have_content('Likes')
+    end
+
+    it 'Should see the post body' do
       expect(page).to have_content('Accounting made easy')
     end
 
-    it 'Should see the see all posts button' do
-      visit post_path(@user1.id, @post1.id)
-      expect(page).to have_button('Add Like')
+    it 'Should see the commenter username' do
+      expect(page).to have_content('Moses')
     end
 
-    it 'Should redirect me to the user post show page' do
-      visit post_path(@user1.id, @post1.id)
-      visit post_path('1', '1')
-      expect(page).to have_content('This is my comment')
-    end
-
-    it 'Should see the comments' do
-      visit post_path(@user1.id, @post1.id)
+    it 'Should see comment user left' do
       expect(page).to have_content('This is great')
     end
   end
