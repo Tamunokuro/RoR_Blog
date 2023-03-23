@@ -14,4 +14,5 @@
 <div class= 'post--utility'>
 <%= button_to("Create new comment", new_comment_path(@user, @post), method: :get, class: 'btn btn-secondary') %>
 <%= button_to("Add Like", create_like_path(@user, @post), method: :post, class: 'btn btn-secondary') %>
+<%= button_to("Back", create_post_path(@user), method: :get, class: 'btn btn-secondary') %>
 </div>

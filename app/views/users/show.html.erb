@@ -12,7 +12,7 @@
 <div class= 'user--posts'>
 <h3 id='recent--posts'>Most recent posts</h3>
 <div class= 'posts'>
-<% @posts.each do |post| %>
+<% @user.most_recent_posts.each do |post| %>
     <div class='post'>
     <h4><%= link_to post.title, controller: "posts", action: "show", author_id: @user.id, post_id: post.id %></h4>
     <div class='post--utility'>
@@ -23,6 +23,7 @@
 <% end %>
 </div>
 <%= button_to("See all Post", posts_path(@user), method: :get, class: 'more-posts-btn') %>
+<%= button_to("Create new post", new_post_path(@user), method: :get, class: 'more-posts-btn mt-3') %>
 </div>
 
 
