@@ -12,4 +12,8 @@
     <%= render partial: "shared/post", locals: { post: post } %>
     <% end %>
 </ul>
-<%= button_to("Pagination", posts_path(@user), method: :get, class: 'btn btn-secondary mb-3') %>
+
+<div class= 'post--utility'>
+<%= button_to("Back", user_path(@user), method: :get, class: 'btn btn-secondary') %>
+<%= button_to("Create new post", new_post_path(@user), method: :get, class: 'btn btn-secondary') %>
+</div>

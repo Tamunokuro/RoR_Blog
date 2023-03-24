@@ -1,8 +1,9 @@
 class Post < ApplicationRecord
   belongs_to :user, foreign_key: :author_id
-  has_many :comments, foreign_key: :post_id
-  has_many :likes, foreign_key: :post_id
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   after_save :posts_counter
+  after_destroy :decrement_post_counter
 
   validates :title, length: { maximum: 250 }, allow_blank: false
   validates :comments_counter, numericality: { only_integer: true }, comparison: { greater_than_or_equal_to: 0 }
@@ -23,6 +24,13 @@ class Post < ApplicationRecord
     return unless user
 
     user.increment :postscounter
+    user.save
+  end
+
+  def decrement_post_counter
+    return unless user
+
+    user.decrement :postscounter
     user.save
   end
 end
