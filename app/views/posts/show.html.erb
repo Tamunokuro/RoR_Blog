@@ -8,11 +8,18 @@
 <h3 id= 'comments--section'>Comments</h3>
 <ul class= 'comments'>
     <% @post.recent_comments.each do |comment| %>
-    <li class= 'comment'> <strong><%= comment.user.name %></strong>:<%= comment.text %></li> 
+    <li class= 'comment'> <strong><%= comment.user.name %></strong>:<%= comment.text %>
+    <% if can? :destroy, comment %>
+    <%= button_to "Delete", delete_comment_path(@user, @post, comment), method: :delete, class: 'btn btn-danger mb-3' %>
+    <% end %>
+    </li> 
     <% end %>
 </ul>
 <div class= 'post--utility'>
 <%= button_to("Create new comment", new_comment_path(@user, @post), method: :get, class: 'btn btn-secondary') %>
 <%= button_to("Add Like", create_like_path(@user, @post), method: :post, class: 'btn btn-secondary') %>
 <%= button_to("Back", create_post_path(@user), method: :get, class: 'btn btn-secondary') %>
+<% if can? :destroy, @delete %>
+  <%= button_to "Delete Post", delete_path(@user, @post), method: :delete, class: 'btn btn-danger' %>
+<% end %>
 </div>
