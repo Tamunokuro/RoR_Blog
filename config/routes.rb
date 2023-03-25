@@ -26,6 +26,11 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index', as: 'users'
   get 'users/:id', to: 'users#show', as: 'user'
 
+  namespace :api do
+    get "/users/:author_id/posts", to: "posts#index", as: "api-user-posts"
+    get "/users/:author_id/posts/:post_id/comments", to: "comments#index", as: "api-posts-comment"
+    post "/users/:author_id/posts/:post_id/comments/new", to: "comments#create", as: "api-create-comment"
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 end
